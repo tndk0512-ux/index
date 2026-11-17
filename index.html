@@ -1,89 +1,1100 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>우리 반 자기소개 데이터 아카이브</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Gowun+Batang:wght@400;700&family=Pretendard:wght@400;500;600;700;800&display=swap');
-:root{--bg:#edf1e9;--paper:#f8faf5;--ink:#1c2a25;--muted:#77847b;--line:#d5ded3;--green:#397568;--green2:#a9c8b7;--orange:#d46d4e;--yellow:#d6b66c;--shadow:0 12px 34px rgba(39,66,53,.07)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,"Apple SD Gothic Neo",sans-serif;line-height:1.55}
-.wrap{max-width:1200px;margin:auto;padding:32px 24px 64px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px}
-.eyebrow,.mono{font:500 11px 'DM Mono',monospace;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
-.eyebrow b{color:var(--green)}h1{font:700 clamp(32px,5vw,54px) 'Gowun Batang',serif;letter-spacing:-.04em;margin:18px 0 8px}
-.lead{color:#637169;max-width:700px;margin:0 0 26px;font-size:15px}
-.stamp{border:1px solid var(--line);padding:9px 12px;border-radius:3px;color:var(--green);font:500 10px 'DM Mono',monospace;white-space:nowrap}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:26px 0}
-.kpi,.panel{background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow)}
-.kpi{padding:18px 20px}.kpi .label{font:500 10px 'DM Mono',monospace;color:var(--muted);letter-spacing:.1em}
-.kpi strong{display:block;font:700 34px 'Gowun Batang',serif;margin-top:5px}.kpi small{font-size:12px;color:var(--muted);font-family:Pretendard}
-.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}.panel{padding:20px 22px;min-width:0}
-.panel h2{font:700 21px 'Gowun Batang',serif;margin:0 0 4px}.sub{font-size:12px;color:var(--muted);margin-bottom:18px}
-.chart{width:100%;overflow:hidden}.barrow{display:grid;grid-template-columns:95px 1fr 34px;align-items:center;gap:10px;margin:12px 0;font-size:12px}
-.barlabel{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#526158}.track{height:10px;background:#e8eee6;border-radius:20px;overflow:hidden}.fill{height:100%;background:var(--green);border-radius:20px}.barvalue{text-align:right;font:500 11px 'DM Mono',monospace;color:var(--green)}
-.distance-list{display:flex;flex-direction:column;gap:10px}.distance-row{display:grid;grid-template-columns:64px 1fr 52px;gap:9px;align-items:center;font-size:12px}.distance-row .name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#526158}.distance-row .track{height:8px}.distance-row .fill{background:var(--orange)}.distance-row .km{text-align:right;font:500 11px 'DM Mono',monospace}
-.tags{display:flex;flex-wrap:wrap;gap:8px}.tag{padding:7px 10px;border:1px solid var(--line);background:#f1f5ee;border-radius:30px;font-size:12px;color:#53645a}.tag b{color:var(--green);margin-left:5px;font:500 11px 'DM Mono',monospace}
-.full{margin-top:14px}.treasures{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.treasure{padding:12px;border-left:2px solid var(--yellow);background:#f2f5ee;font-size:12px}.treasure strong{display:block;font-size:11px;color:var(--green);margin-bottom:3px}
-.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:28px 0 12px;flex-wrap:wrap}.toolbar h2{font:700 24px 'Gowun Batang',serif;margin:0}
-input{border:1px solid var(--line);background:var(--paper);padding:10px 13px;font:inherit;font-size:13px;min-width:220px;outline:none}input:focus{border-color:var(--green)}
-.tablewrap{overflow:auto;background:var(--paper);border:1px solid var(--line)}table{width:100%;border-collapse:collapse;min-width:760px;font-size:12px}th,td{text-align:left;padding:12px 14px;border-bottom:1px solid #e5ebe2;vertical-align:top}th{font:500 10px 'DM Mono',monospace;color:var(--muted);letter-spacing:.08em;background:#f1f5ee}tbody tr:hover{background:#f1f6ef}td:first-child{font:500 11px 'DM Mono',monospace;color:var(--muted)}.person{font-weight:700}.profile{margin-top:14px;display:none;padding:20px;background:#e2ebe1;border:1px solid #cbd9ca}.profile.show{display:block}.profile h3{font:700 24px 'Gowun Batang',serif;margin:0 0 12px}.profile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.profile-item{background:rgba(255,255,255,.55);padding:10px 12px;font-size:12px}.profile-item span{display:block;font:500 9px 'DM Mono',monospace;color:var(--muted);margin-bottom:4px}
-.note{margin-top:20px;color:var(--muted);font-size:11px}.footer{margin-top:34px;border-top:1px solid var(--line);padding-top:14px;display:flex;justify-content:space-between;gap:12px;color:var(--muted);font:10px 'DM Mono',monospace}
-@media(max-width:800px){.grid{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.treasures{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){.wrap{padding:22px 14px 44px}.stamp{display:none}.panel{padding:17px}.profile-grid{grid-template-columns:1fr 1fr}.treasures{grid-template-columns:1fr}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>윤수아(tndk0512-ux)의 학급 인물지도 & 데이터 아틀라스</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --bg: #0b0e17;
+      --surface: #141928;
+      --surface-2: #1b2236;
+      --border: #2a3352;
+      --text: #eef2ff;
+      --muted: #9aa5c4;
+      --accent: #ff6b9d;
+      --accent-2: #7c8cff;
+      --mint: #34d399;
+      --amber: #fbbf24;
+      --shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    body.light {
+      --bg: #f5f7fc;
+      --surface: #ffffff;
+      --surface-2: #eef2fb;
+      --border: #dce3f2;
+      --text: #1b2236;
+      --muted: #5d6887;
+      --accent: #e64980;
+      --accent-2: #4f5bd5;
+      --mint: #059669;
+      --amber: #d97706;
+      --shadow: 0 8px 24px rgba(31, 41, 80, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    .container { max-width: 1220px; margin: 0 auto; padding: 24px 18px 60px; }
+
+    /* Top Bar */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+    .brand-badge {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+    .theme-btn {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .theme-btn:hover { border-color: var(--accent-2); }
+
+    /* Hero Card (ME: 윤수아) */
+    .hero {
+      background: linear-gradient(135deg, rgba(255, 107, 157, 0.14), rgba(124, 140, 255, 0.14)), var(--surface);
+      border: 1px solid rgba(255, 107, 157, 0.45);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; }
+    }
+    .hero-profile { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+    .avatar {
+      width: 78px; height: 78px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 2px solid rgba(255,255,255,0.25);
+    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-title { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .hero-title h1 { font-size: 1.55rem; font-weight: 800; }
+    .me-pill {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+    .hero-sub { color: var(--muted); font-size: 0.92rem; margin-top: 4px; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .tag {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      color: var(--text);
+    }
+    .tag.highlight { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+
+    .hero-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .btn-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 7px 12px;
+      border-radius: 9px;
+      background: var(--surface-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      transition: 0.15s;
+    }
+    .btn-link:hover { border-color: var(--accent-2); transform: translateY(-1px); }
+    .btn-link.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    .match-box {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+    .match-box h2 { font-size: 0.95rem; margin-bottom: 10px; color: var(--accent-2); }
+    .match-item {
+      font-size: 0.85rem;
+      padding: 6px 0;
+      border-bottom: 1px dashed var(--border);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .match-item:last-child { border-bottom: none; }
+    .match-label { color: var(--muted); flex-shrink: 0; }
+    .match-val { font-weight: 600; text-align: right; }
+
+    /* KPI Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .kpi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 18px;
+      box-shadow: var(--shadow);
+    }
+    .kpi-label { font-size: 0.82rem; color: var(--muted); }
+    .kpi-val { font-size: 1.65rem; font-weight: 800; margin-top: 4px; color: var(--accent-2); }
+    .kpi-sub { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+
+    /* Section Card */
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .section-head h2 { font-size: 1.12rem; font-weight: 700; }
+    .map-controls { display: flex; flex-wrap: wrap; gap: 8px; }
+    .ctrl-btn {
+      background: var(--surface-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+    .ctrl-btn.active, .ctrl-btn:hover {
+      background: var(--accent-2);
+      border-color: var(--accent-2);
+      color: #fff;
+    }
+
+    #map {
+      width: 100%;
+      height: 450px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      z-index: 1;
+    }
+    .map-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 12px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .dot {
+      display: inline-block;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+
+    /* Charts Grid */
+    .charts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+    .chart-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .chart-card h3 { font-size: 0.98rem; margin-bottom: 12px; }
+    .chart-wrap { position: relative; height: 270px; }
+
+    /* Directory Controls */
+    .dir-controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .filter-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .search-input {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 14px;
+      border-radius: 10px;
+      min-width: 240px;
+      font-size: 0.88rem;
+      outline: none;
+    }
+    .search-input:focus { border-color: var(--accent-2); }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 16px;
+    }
+    .person-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+    .person-card:hover { transform: translateY(-2px); border-color: var(--accent-2); }
+    .person-card.is-me {
+      border: 2px solid var(--accent);
+      background: linear-gradient(160deg, rgba(255,107,157,0.12), var(--surface-2));
+    }
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .card-name { font-size: 1.08rem; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+    .dist-badge {
+      font-size: 0.74rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(124, 140, 255, 0.18);
+      color: var(--accent-2);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .card-meta { font-size: 0.84rem; color: var(--muted); }
+    .card-meta strong { color: var(--text); font-weight: 600; }
+    .card-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 6px; }
+    .mini-link {
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      border-radius: 6px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .mini-link:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Leaflet custom pin */
+    .custom-pin {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      border: 2.5px solid #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.45);
+    }
+    .me-pin {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: #ff6b9d;
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 6px rgba(255, 107, 157, 0.35), 0 3px 10px rgba(0,0,0,0.5);
+    }
+  </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="top"><div class="eyebrow">CLASS DATA ARCHIVE <b>· 2026</b></div><div class="stamp">SELF INTRODUCTION / DATA VISUALIZATION</div></div>
-  <h1>우리 반, 조금 더 가까이</h1>
-  <p class="lead">15명의 자기소개를 데이터로 살펴봅니다. 각자의 취미와 사는 곳, 통학 거리, 소중하게 생각하는 것들을 한눈에 확인해 보세요.</p>
-  <div class="kpis" id="kpis"></div>
-  <div class="grid">
-    <section class="panel"><h2>어디에 살고 있을까요?</h2><div class="sub">거주 지역별 인원 · 위치를 입력한 학생 기준</div><div id="cities" class="chart"></div></section>
-    <section class="panel"><h2>학교까지 얼마나 멀까요?</h2><div class="sub">학생별 학교까지의 직선거리 · 제공된 거리 기준</div><div id="distances" class="distance-list"></div></section>
-    <section class="panel"><h2>우리 반의 취미</h2><div class="sub">자기소개에 적힌 취미 키워드 · 중복 집계 가능</div><div id="hobbies" class="tags"></div></section>
-    <section class="panel"><h2>가장 아끼는 것</h2><div class="sub">각자 소중하게 생각하는 대상을 그대로 모았습니다.</div><div id="treasures" class="treasures"></div></section>
+  <div class="container">
+    <div class="topbar">
+      <div class="brand">
+        <span class="brand-badge">tndk0512-ux</span>
+        <span>윤수아의 인물지도 &amp; 학급 데이터 시각화</span>
+      </div>
+      <button class="theme-btn" id="themeToggle">☀️ 라이트 모드</button>
+    </div>
+
+    <!-- ME Hero Section -->
+    <section class="hero">
+      <div>
+        <div class="hero-profile">
+          <div class="avatar" id="myAvatar">수아</div>
+          <div>
+            <div class="hero-title">
+              <h1>윤수아</h1>
+              <span class="me-pill">ME · 기준점</span>
+            </div>
+            <div class="hero-sub">서울특별시 송파구 마천동 · @tnd_0_5 · 여자</div>
+            <div class="hero-tags">
+              <span class="tag highlight">🎸 기타</span>
+              <span class="tag highlight">🎬 애니</span>
+              <span class="tag highlight">🎧 음악듣기</span>
+              <span class="tag">💛 아끼는 것: 동생</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-links">
+          <a class="btn-link primary" href="https://github.com/tndk0512-ux" target="_blank" rel="noopener">GitHub (tndk0512-ux)</a>
+          <a class="btn-link" href="https://tndk0512-ux.github.io/index/" target="_blank" rel="noopener">내 제출 페이지</a>
+          <a class="btn-link" href="https://www.instagram.com/tnd_0_5/" target="_blank" rel="noopener">인스타 @tnd_0_5</a>
+          <span class="btn-link" id="ghRepoBadge">GitHub 정보 확인 중...</span>
+        </div>
+      </div>
+
+      <div class="match-box">
+        <h2>✨ 나(윤수아)와의 연결 포인트</h2>
+        <div class="match-item">
+          <span class="match-label">🎸 악기/기타 메이트</span>
+          <span class="match-val" id="matchGuitar">-</span>
+        </div>
+        <div class="match-item">
+          <span class="match-label">🎧 음악/노래 메이트</span>
+          <span class="match-val" id="matchMusic">-</span>
+        </div>
+        <div class="match-item">
+          <span class="match-label">🎬 애니 메이트</span>
+          <span class="match-val" id="matchAnime">-</span>
+        </div>
+        <div class="match-item">
+          <span class="match-label">💛 '동생' 바보 메이트</span>
+          <span class="match-val" id="matchSibling">-</span>
+        </div>
+        <div class="match-item">
+          <span class="match-label">📍 가장 가까운 이웃</span>
+          <span class="match-val" id="matchNearest">-</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- KPI Cards -->
+    <section class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">전체 참여 인원</div>
+        <div class="kpi-val" id="kpiTotal">15명</div>
+        <div class="kpi-sub">시트 데이터 기준</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">취미 교집합 친구</div>
+        <div class="kpi-val" id="kpiHobbyMatch">0명</div>
+        <div class="kpi-sub">기타·음악·애니 키워드</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">나와의 평균 거리</div>
+        <div class="kpi-val" id="kpiAvgDist">0 km</div>
+        <div class="kpi-sub">송파구 마천동 기준 직선거리</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">인물지도 제출률</div>
+        <div class="kpi-val" id="kpiMapRate">0%</div>
+        <div class="kpi-sub" id="kpiMapSub">13 / 15명 제출</div>
+      </div>
+    </section>
+
+    <!-- Interactive Map -->
+    <section class="section-card">
+      <div class="section-head">
+        <h2>🗺️ 학급 인물지도 (송파구 마천동 중심)</h2>
+        <div class="map-controls">
+          <button class="ctrl-btn active" id="btnViewMetro">수도권 집중 보기</button>
+          <button class="ctrl-btn" id="btnViewAll">전국 전체 (거제·춘천 포함)</button>
+          <button class="ctrl-btn" id="btnViewMe">내 위치 (마천동)</button>
+          <button class="ctrl-btn active" id="btnToggleLines">취미 메이트 연결선 ON</button>
+        </div>
+      </div>
+      <div id="map"></div>
+      <div class="map-legend">
+        <span><span class="dot" style="background:#ff6b9d;"></span>윤수아 (나 · 송파구 마천동)</span>
+        <span><span class="dot" style="background:#34d399;"></span>나와 취미 메이트 (기타/음악/애니)</span>
+        <span><span class="dot" style="background:#7c8cff;"></span>다른 지역 친구</span>
+      </div>
+    </section>
+
+    <!-- Charts -->
+    <section class="charts-grid">
+      <div class="chart-card">
+        <h3>📏 나(마천동)로부터 친구들까지 직선거리 (km)</h3>
+        <div class="chart-wrap"><canvas id="distChart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3>🏙️ 거주 지역별 분포</h3>
+        <div class="chart-wrap"><canvas id="regionChart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3>🎨 취미 키워드 TOP 분포</h3>
+        <div class="chart-wrap"><canvas id="hobbyChart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3>💎 가장 아끼는 것 &amp; 성별 응답 유형</h3>
+        <div class="chart-wrap"><canvas id="treasureChart"></canvas></div>
+      </div>
+    </section>
+
+    <!-- Student Directory -->
+    <section class="section-card">
+      <div class="section-head">
+        <h2>👥 학급 전체 인물 카드 (15명)</h2>
+      </div>
+      <div class="dir-controls">
+        <div class="filter-pills">
+          <button class="ctrl-btn active" data-filter="all">전체 (15)</button>
+          <button class="ctrl-btn" data-filter="match">수아 취미 메이트</button>
+          <button class="ctrl-btn" data-filter="서울">서울</button>
+          <button class="ctrl-btn" data-filter="경기">경기도</button>
+          <button class="ctrl-btn" data-filter="기타">강원·경남</button>
+        </div>
+        <input class="search-input" id="searchInput" type="text" placeholder="이름, 동네, 취미, 아끼는 것 검색..." />
+      </div>
+      <div class="cards-grid" id="cardsGrid"></div>
+    </section>
   </div>
-  <div class="toolbar"><h2>한 사람씩 만나보기</h2><input id="search" placeholder="이름, 지역, 취미 검색하기"></div>
-  <div class="tablewrap"><table><thead><tr><th>NO.</th><th>이름</th><th>사는 곳</th><th>학교까지</th><th>취미</th><th>가장 아끼는 것</th></tr></thead><tbody id="rows"></tbody></table></div>
-  <div class="profile" id="profile"></div>
-  <p class="note">※ 통학 거리는 원본 자기소개 데이터에 기재된 학교까지의 직선거리입니다. 위치 또는 항목을 입력하지 않은 경우 통계에서 제외했습니다. 공개 게시 전에는 학급 구성원의 동의를 확인해 주세요.</p>
-  <div class="footer"><span>CLASS / INTRODUCTION DATA</span><span>MADE WITH CARE · 2026</span></div>
-</div>
-<script>
-const people = [
-{name:"박종석",city:"의정부시",km:8,hobby:"일렉기타, 영화감상",treasure:"나"},
-{name:"박준영",city:"의정부시",km:9,hobby:"피파",treasure:"김보라"},
-{name:"강민서",city:"미입력",km:null,hobby:"쿠리만쥬 인형 구매",treasure:"미입력"},
-{name:"박정빈",city:"거제시",km:353,hobby:"노래듣기",treasure:"나 ^.....^"},
-{name:"김나림",city:"동두천시",km:10,hobby:"그림, 음악, 운동, 애니",treasure:"나라고 나"},
-{name:"김보라",city:"의정부시",km:7,hobby:"공포 보기",treasure:"김복돌"},
-{name:"김승기",city:"구리시",km:24,hobby:"네줄기타",treasure:"바로바로 나!"},
-{name:"문민희",city:"남양주시",km:24,hobby:"게임",treasure:"가족, 망고, 여름"},
-{name:"민제희",city:"춘천시",km:58,hobby:"게임, 운동, 기깔나게 자기",treasure:"가족들, 이연우"},
-{name:"윤수아",city:"송파구",km:36,hobby:"기타, 애니, 음악듣기",treasure:"동생"},
-{name:"이지민",city:"하남시",km:30,hobby:"독서",treasure:"가족"},
-{name:"정유림",city:"동대문구",km:28,hobby:"콘서트 관람",treasure:"우리 엄마, 이성열 미모"},
-{name:"최윤영",city:"도봉구",km:19,hobby:"음악 감상 및 연주(통기타&일렉)",treasure:"엄마"},
-{name:"최윤지",city:"포천시",km:14,hobby:"우쿨렐레, 뜨개질",treasure:"건강"},
-{name:"신단하",city:"의정부시",km:9,hobby:"위시 사랑하기",treasure:"동생"}
-];
-const placed=people.filter(p=>p.km!==null), avg=Math.round(placed.filter(p=>p.city!=="거제시").reduce((s,p)=>s+p.km,0)/placed.filter(p=>p.city!=="거제시").length);
-const near=placed.filter(p=>p.km<=15).length;
-const cityCounts={};placed.forEach(p=>{cityCounts[p.city]=(cityCounts[p.city]||0)+1});
-const cities=Object.entries(cityCounts).sort((a,b)=>b[1]-a[1]);
-document.getElementById('kpis').innerHTML=[
-["전체 인원",people.length,"명"],["지역 입력",placed.length,"명"],["15km 이내",near,"명"],["수도권 평균 거리",avg,"km*"]
-].map(([a,b,c])=>`<div class="kpi"><div class="label">${a}</div><strong>${b}<small>${c}</small></strong></div>`).join('');
-document.getElementById('cities').innerHTML=cities.map(([name,n])=>`<div class="barrow"><div class="barlabel">${name}</div><div class="track"><div class="fill" style="width:${n/Math.max(...cities.map(x=>x[1]))*100}%"></div></div><div class="barvalue">${n}명</div></div>`).join('');
-const dist=[...placed].sort((a,b)=>a.km-b.km);
-document.getElementById('distances').innerHTML=dist.map(p=>`<div class="distance-row"><div class="name">${p.name}</div><div class="track"><div class="fill" style="width:${p.km/353*100}%"></div></div><div class="km">${p.km}km</div></div>`).join('');
-const categories={"음악":["기타","음악","노래","콘서트","우쿨렐레"],"게임·애니":["게임","피파","애니","쿠리만쥬"],"운동·휴식":["운동","자기"],"예술·취미":["그림","뜨개질","독서","위시","공포","영화"]};
-const hobbyCounts={};Object.entries(categories).forEach(([cat,keys])=>{hobbyCounts[cat]=people.filter(p=>keys.some(k=>p.hobby.includes(k))).length});
-document.getElementById('hobbies').innerHTML=Object.entries(hobbyCounts).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span class="tag">${k}<b>${v}명</b></span>`).join('')+`<span class="tag">기타 취미<b>개별 소개 참고</b></span>`;
-document.getElementById('treasures').innerHTML=people.filter(p=>p.treasure!=="미입력").map(p=>`<div class="treasure"><strong>${p.name}</strong>${p.treasure}</div>`).join('');
-function renderRows(q=""){const filtered=people.filter(p=>(p.name+p.city+p.hobby+p.treasure).toLowerCase().includes(q.toLowerCase()));document.getElementById('rows').innerHTML=filtered.map(p=>`<tr data-name="${p.name}"><td>${String(people.indexOf(p)+1).padStart(2,'0')}</td><td class="person">${p.name}</td><td>${p.city}</td><td>${p.km===null?"미입력":p.km+"km"}</td><td>${p.hobby}</td><td>${p.treasure}</td></tr>`).join('');document.querySelectorAll('#rows tr').forEach(tr=>tr.onclick=()=>showProfile(people.find(p=>p.name===tr.dataset.name)));}
-function showProfile(p){const el=document.getElementById('profile');el.classList.add('show');el.innerHTML=`<h3>${p.name}</h3><div class="profile-grid"><div class="profile-item"><span>LOCATION</span>${p.city}</div><div class="profile-item"><span>DISTANCE</span>${p.km===null?"미입력":p.km+"km"}</div><div class="profile-item"><span>HOBBY</span>${p.hobby}</div><div class="profile-item"><span>TREASURE</span>${p.treasure}</div></div>`;el.scrollIntoView({behavior:'smooth',block:'nearest'});}
-document.getElementById('search').addEventListener('input',e=>renderRows(e.target.value));renderRows();
-</script>
-</body></html>
+
+  <script>
+    const MY_NAME = "윤수아";
+    const MY_GITHUB = "tndk0512-ux";
+
+    const PEOPLE = [
+      {
+        name: "박종석",
+        github: "https://github.com/John02-design",
+        page: "https://john02-design.github.io/1234/",
+        ig: "I_am_jongseok",
+        hobby: "일렉기타, 영화감상",
+        address: "경기도 의정부시 민락동",
+        region: "경기",
+        lat: 37.7409, lng: 127.0957,
+        treasure: "나",
+        gender: "미입력",
+        mapUrl: "https://john02-design.github.io/class-map/",
+        aiUrl: "https://john02-design.github.io/class-map-2/"
+      },
+      {
+        name: "박준영",
+        github: "https://github.com/alex60796-bot",
+        page: "https://alex60796-bot.github.io/dkssudgktpdy/",
+        ig: "jxn.y0xn9",
+        hobby: "피파",
+        address: "경기도 의정부시 의정부동",
+        region: "경기",
+        lat: 37.7385, lng: 127.0448,
+        treasure: "김보라",
+        gender: "공룡",
+        mapUrl: "https://alex60796-bot.github.io/12121212/",
+        aiUrl: "https://alex60796-bot.github.io/131313131/"
+      },
+      {
+        name: "강민서",
+        github: "https://github.com/rlverms",
+        page: "https://rlverms.github.io/rlverms/",
+        ig: "rlverms",
+        hobby: "쿠리만쥬 인형 구매, 영화 시청, 음악 감상",
+        address: "서울특별시 노원구 상계동",
+        region: "서울",
+        lat: 37.6538, lng: 127.0602,
+        treasure: "엄마",
+        gender: "여자",
+        mapUrl: "https://rlverms.github.io/kurimanzu/",
+        aiUrl: "https://rlverms.github.io/Google-Studio-AI/"
+      },
+      {
+        name: "박정빈",
+        github: "https://github.com/ImSAKUYAmyfriendisRYO",
+        page: "https://imsakuyamyfriendisryo.github.io/-/",
+        ig: "@upfstpu.2",
+        hobby: "노래듣기",
+        address: "경상남도 거제시 장평동",
+        region: "기타",
+        lat: 34.8921, lng: 128.6074,
+        treasure: "나 ^.....^",
+        gender: "여자",
+        mapUrl: "",
+        aiUrl: ""
+      },
+      {
+        name: "김나림",
+        github: "https://github.com/nalimgim947",
+        page: "https://nalimgim947.github.io/narim/",
+        ig: "@thisisimrimthis",
+        hobby: "그림, 음악, 운동, 애니",
+        address: "경기도 동두천시",
+        region: "경기",
+        lat: 37.9035, lng: 127.0605,
+        treasure: "나라고 나",
+        gender: "덩엉이",
+        mapUrl: "https://nalimgim947.github.io/narim3/",
+        aiUrl: "https://nalimgim947.github.io/narim5/"
+      },
+      {
+        name: "김보라",
+        github: "https://github.com/KIMBORA050411",
+        page: "https://kimbora050411.github.io/050411/",
+        ig: "@b0.ra.4",
+        hobby: "공포 보기",
+        address: "경기도 의정부시 금오동",
+        region: "경기",
+        lat: 37.7525, lng: 127.0582,
+        treasure: "김복돌",
+        gender: "여자",
+        mapUrl: "https://kimbora050411.github.io/1111/",
+        aiUrl: "https://kimbora050411.github.io/3333/"
+      },
+      {
+        name: "김승기",
+        github: "https://github.com/Seung7l",
+        page: "https://seung7l.github.io/DoSiMoonWhaSulGye/",
+        ig: "@_seung7l",
+        hobby: "네줄기타",
+        address: "경기도 구리시 인창동",
+        region: "경기",
+        lat: 37.6061, lng: 127.1394,
+        treasure: "바로바로 나!",
+        gender: "남자",
+        mapUrl: "https://seung7l.github.io/1117/",
+        aiUrl: "https://seung7l.github.io/1117-Google/"
+      },
+      {
+        name: "문민희",
+        github: "https://github.com/massiag41-art",
+        page: "https://massiag41-art.github.io/1233/",
+        ig: "@mini3061",
+        hobby: "게임",
+        address: "경기도 남양주시",
+        region: "경기",
+        lat: 37.6360, lng: 127.2165,
+        treasure: "가족,망고,여름",
+        gender: "여자",
+        mapUrl: "",
+        aiUrl: ""
+      },
+      {
+        name: "민제희",
+        github: "https://github.com/alfmekfn5",
+        page: "https://alfmekfn5.github.io/555/",
+        ig: "@mirdar.u_",
+        hobby: "게임, 운동, 기깔나게 자기",
+        address: "강원도 춘천시",
+        region: "기타",
+        lat: 37.8813, lng: 127.7298,
+        treasure: "가족들, 이연우, 정유림, 김나림",
+        gender: "경동대제국 1황녀",
+        mapUrl: "https://alfmekfn5.github.io/data-atlas/",
+        aiUrl: "https://alfmekfn5.github.io/data-atlas/kdu-design-3rd-year-map.html"
+      },
+      {
+        name: "윤수아",
+        isMe: true,
+        github: "https://github.com/tndk0512-ux",
+        page: "https://tndk0512-ux.github.io/index/",
+        ig: "tnd_0_5",
+        hobby: "기타,애니,음악듣기",
+        address: "서울특별시 송파구 마천동",
+        region: "서울",
+        lat: 37.4981, lng: 127.1484,
+        treasure: "동생",
+        gender: "여자",
+        mapUrl: "https://tndk0512-ux.github.io/index/",
+        aiUrl: ""
+      },
+      {
+        name: "이지민",
+        github: "https://github.com/leejimin0",
+        page: "https://leejimin0.github.io/ezym/",
+        ig: "@tonmozza",
+        hobby: "독서",
+        address: "경기도 하남시 망월동",
+        region: "경기",
+        lat: 37.5648, lng: 127.1886,
+        treasure: "가족",
+        gender: "여자",
+        mapUrl: "https://leejimin0.github.io/ezy1/",
+        aiUrl: "https://leejimin0.github.io/ezy2/"
+      },
+      {
+        name: "정유림",
+        github: "https://github.com/yourrime0502-afk",
+        page: "https://yourrime0502-afk.github.io/kdu1/",
+        ig: "@nollimmm",
+        hobby: "콘서트 관람",
+        address: "서울특별시 동대문구 답십리2동",
+        region: "서울",
+        lat: 37.5715, lng: 127.0600,
+        treasure: "우리 엄마, 이성열 미모",
+        gender: "여자",
+        mapUrl: "https://yourrime0502-afk.github.io/kdu1/kyungdong_class_data_atlas.html",
+        aiUrl: "https://yourrime0502-afk.github.io/kdu1/%EA%B2%BD%EB%8F%99%EB%8C%80%ED%95%99%EA%B5%90_%EB%A9%94%ED%8A%B8%EB%A1%9C%ED%8F%B4%EC%BA%A0%ED%8D%BC%EC%8A%A4_%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%8B%9C%EA%B0%81%ED%99%94%20%282%29.html"
+      },
+      {
+        name: "최윤영",
+        github: "https://github.com/usagi030dd",
+        page: "https://usagi030dd.github.io/samples/",
+        ig: "@usagi030dd",
+        hobby: "음악 감상 및 연주(통기타&일렉)",
+        address: "서울특별시 도봉구 쌍문동",
+        region: "서울",
+        lat: 37.6527, lng: 127.0287,
+        treasure: "엄마",
+        gender: "여자",
+        mapUrl: "https://usagi030dd.github.io/-/",
+        aiUrl: ""
+      },
+      {
+        name: "최윤지",
+        github: "https://github.com/choiyg1105-cloud",
+        page: "https://choiyg1105-cloud.github.io/save/",
+        ig: "yum._.crochet",
+        hobby: "우쿨렐레, 뜨개질",
+        address: "경기도 포천시",
+        region: "경기",
+        lat: 37.8949, lng: 127.2003,
+        treasure: "건강",
+        gender: "여자",
+        mapUrl: "https://choiyg1105-cloud.github.io/data/",
+        aiUrl: "https://choiyg1105-cloud.github.io/gooooo/"
+      },
+      {
+        name: "신단하",
+        github: "https://github.com/danhaaaa",
+        page: "https://danhaaaa.github.io/sakuya/",
+        ig: "@danha_naa",
+        hobby: "위시 사랑하기",
+        address: "경기도 의정부시 신곡2동",
+        region: "경기",
+        lat: 37.7410, lng: 127.0579,
+        treasure: "동생",
+        gender: "여자",
+        mapUrl: "https://danhaaaa.github.io/ourmap2026/",
+        aiUrl: ""
+      }
+    ];
+
+    const me = PEOPLE.find(p => p.isMe);
+
+    // Haversine distance (km)
+    function calcDist(lat1, lon1, lat2, lon2) {
+      const R = 6371;
+      const dLat = (lat2 - lat1) * Math.PI / 180;
+      const dLon = (lon2 - lon1) * Math.PI / 180;
+      const a = Math.sin(dLat / 2) ** 2 +
+        Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+        Math.sin(dLon / 2) ** 2;
+      return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    }
+
+    function isHobbyMatch(p) {
+      if (p.isMe) return false;
+      return /기타|우쿨렐레|음악|노래|애니|콘서트/.test(p.hobby);
+    }
+
+    PEOPLE.forEach(p => {
+      p.distKm = p.isMe ? 0 : calcDist(me.lat, me.lng, p.lat, p.lng);
+      p.isMatch = isHobbyMatch(p);
+    });
+
+    // Populate Hero Matching Box & KPIs
+    const guitarMates = PEOPLE.filter(p => !p.isMe && /기타|우쿨렐레/.test(p.hobby)).map(p => p.name);
+    const musicMates = PEOPLE.filter(p => !p.isMe && /음악|노래|콘서트/.test(p.hobby)).map(p => p.name);
+    const animeMates = PEOPLE.filter(p => !p.isMe && /애니/.test(p.hobby)).map(p => p.name);
+    const siblingMates = PEOPLE.filter(p => !p.isMe && /동생/.test(p.treasure)).map(p => p.name);
+    const othersSorted = PEOPLE.filter(p => !p.isMe).sort((a, b) => a.distKm - b.distKm);
+
+    document.getElementById("matchGuitar").textContent = guitarMates.join(", ");
+    document.getElementById("matchMusic").textContent = musicMates.join(", ");
+    document.getElementById("matchAnime").textContent = animeMates.join(", ");
+    document.getElementById("matchSibling").textContent = siblingMates.join(", ");
+    document.getElementById("matchNearest").textContent = `${othersSorted[0].name} (${othersSorted[0].address}, ${othersSorted[0].distKm.toFixed(1)}km)`;
+
+    const matchCount = PEOPLE.filter(p => p.isMatch).length;
+    const avgDist = othersSorted.reduce((s, p) => s + p.distKm, 0) / othersSorted.length;
+    const mapSubmitted = PEOPLE.filter(p => p.mapUrl).length;
+
+    document.getElementById("kpiHobbyMatch").textContent = `${matchCount}명`;
+    document.getElementById("kpiAvgDist").textContent = `${avgDist.toFixed(1)} km`;
+    document.getElementById("kpiMapRate").textContent = `${Math.round((mapSubmitted / PEOPLE.length) * 100)}%`;
+    document.getElementById("kpiMapSub").textContent = `${mapSubmitted} / ${PEOPLE.length}명 제출`;
+
+    // Fetch live GitHub profile for tndk0512-ux
+    fetch(`https://api.github.com/users/${MY_GITHUB}`)
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        if (!data) {
+          document.getElementById("ghRepoBadge").textContent = "GitHub: tndk0512-ux";
+          return;
+        }
+        if (data.avatar_url) {
+          const av = document.getElementById("myAvatar");
+          av.innerHTML = "";
+          const img = document.createElement("img");
+          img.src = data.avatar_url;
+          img.alt = "윤수아 프로필";
+          av.appendChild(img);
+        }
+        document.getElementById("ghRepoBadge").textContent = `📦 공개 저장소 ${data.public_repos}개 · 팔로워 ${data.followers}명`;
+      })
+      .catch(() => {
+        document.getElementById("ghRepoBadge").textContent = "GitHub: tndk0512-ux";
+      });
+
+    // Leaflet Map Setup
+    const map = L.map("map").setView([37.67, 127.14], 10);
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+      attribution: "&copy; OpenStreetMap &copy; CARTO"
+    }).addTo(map);
+
+    const markerRefs = {};
+    const linesLayer = L.layerGroup().addTo(map);
+    let showLines = true;
+
+    function createPopupHtml(p) {
+      const distText = p.isMe ? "내 위치 (기준점)" : `마천동에서 약 ${p.distKm.toFixed(1)}km`;
+      return `
+        <div style="min-width:200px;font-family:sans-serif;line-height:1.45;">
+          <strong style="font-size:14px;">${p.name}</strong>
+          <span style="font-size:11px;color:#666;"> (${p.gender})</span><br/>
+          <span style="font-size:12px;color:#4f5bd5;font-weight:600;">${distText}</span><br/>
+          <div style="margin-top:5px;font-size:12px;">
+            📍 ${p.address}<br/>
+            🎯 취미: ${p.hobby}<br/>
+            💛 아끼는 것: ${p.treasure}
+          </div>
+          <div style="margin-top:6px;font-size:12px;">
+            <a href="${p.github}" target="_blank" rel="noopener">GitHub</a> ·
+            <a href="${p.page}" target="_blank" rel="noopener">제출페이지</a>
+          </div>
+        </div>
+      `;
+    }
+
+    PEOPLE.forEach(p => {
+      const color = p.isMe ? "#ff6b9d" : (p.isMatch ? "#34d399" : "#7c8cff");
+      const icon = L.divIcon({
+        className: "",
+        html: p.isMe
+          ? `<div class="me-pin"></div>`
+          : `<div class="custom-pin" style="background:${color};"></div>`,
+        iconSize: p.isMe ? [24, 24] : [18, 18],
+        iconAnchor: p.isMe ? [12, 12] : [9, 9]
+      });
+
+      const marker = L.marker([p.lat, p.lng], { icon, zIndexOffset: p.isMe ? 1000 : 0 })
+        .addTo(map)
+        .bindPopup(createPopupHtml(p));
+
+      markerRefs[p.name] = marker;
+
+      if (p.isMatch) {
+        L.polyline([[me.lat, me.lng], [p.lat, p.lng]], {
+          color: "#34d399",
+          weight: 2,
+          opacity: 0.6,
+          dashArray: "5, 6"
+        }).addTo(linesLayer);
+      }
+    });
+
+    // Map Controls
+    document.getElementById("btnViewMetro").addEventListener("click", () => {
+      map.setView([37.67, 127.14], 10);
+    });
+    document.getElementById("btnViewAll").addEventListener("click", () => {
+      const group = L.featureGroup(Object.values(markerRefs));
+      map.fitBounds(group.getBounds().pad(0.15));
+    });
+    document.getElementById("btnViewMe").addEventListener("click", () => {
+      map.setView([me.lat, me.lng], 13);
+      markerRefs[me.name].openPopup();
+    });
+    document.getElementById("btnToggleLines").addEventListener("click", (e) => {
+      showLines = !showLines;
+      if (showLines) {
+        linesLayer.addTo(map);
+        e.target.textContent = "취미 메이트 연결선 ON";
+        e.target.classList.add("active");
+      } else {
+        map.removeLayer(linesLayer);
+        e.target.textContent = "취미 메이트 연결선 OFF";
+        e.target.classList.remove("active");
+      }
+    });
+
+    // Charts
+    let chartInstances = [];
+    function renderCharts() {
+      chartInstances.forEach(c => c.destroy());
+      chartInstances = [];
+
+      const isLight = document.body.classList.contains("light");
+      Chart.defaults.color = isLight ? "#5d6887" : "#9aa5c4";
+      Chart.defaults.borderColor = isLight ? "#dce3f2" : "#2a3352";
+
+      // 1. Distance Chart
+      chartInstances.push(new Chart(document.getElementById("distChart"), {
+        type: "bar",
+        data: {
+          labels: othersSorted.map(p => p.name),
+          datasets: [{
+            label: "직선거리 (km)",
+            data: othersSorted.map(p => Number(p.distKm.toFixed(1))),
+            backgroundColor: othersSorted.map(p => p.isMatch ? "#34d399" : "#7c8cff"),
+            borderRadius: 6
+          }]
+        },
+        options: {
+          indexAxis: "y",
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: { label: ctx => `${ctx.raw} km` } }
+          }
+        }
+      }));
+
+      // 2. Region Chart
+      const regionCounts = {
+        "경기도 (의정부4·동두천·구리·남양주·하남·포천)": PEOPLE.filter(p => p.region === "경기").length,
+        "서울특별시 (송파·노원·동대문·도봉)": PEOPLE.filter(p => p.region === "서울").length,
+        "강원도 (춘천시)": PEOPLE.filter(p => p.address.includes("춘천")).length,
+        "경상남도 (거제시)": PEOPLE.filter(p => p.address.includes("거제")).length
+      };
+      chartInstances.push(new Chart(document.getElementById("regionChart"), {
+        type: "doughnut",
+        data: {
+          labels: Object.keys(regionCounts),
+          datasets: [{
+            data: Object.values(regionCounts),
+            backgroundColor: ["#7c8cff", "#ff6b9d", "#34d399", "#fbbf24"],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { position: "bottom", labels: { boxWidth: 12, font: { size: 11 } } } }
+        }
+      }));
+
+      // 3. Hobby Keywords Chart
+      const hobbyCats = {
+        "음악 감상/노래/콘서트": PEOPLE.filter(p => /음악|노래|콘서트/.test(p.hobby)).length,
+        "악기 연주 (기타/우쿨렐레)": PEOPLE.filter(p => /기타|우쿨렐레/.test(p.hobby)).length,
+        "영상/애니/영화/공포": PEOPLE.filter(p => /영화|애니|공포/.test(p.hobby)).length,
+        "게임 (피파 등)": PEOPLE.filter(p => /게임|피파/.test(p.hobby)).length,
+        "운동": PEOPLE.filter(p => /운동/.test(p.hobby)).length,
+        "독서·그림·뜨개질·덕질 등": PEOPLE.filter(p => /독서|그림|뜨개질|인형|위시|자기/.test(p.hobby)).length
+      };
+      chartInstances.push(new Chart(document.getElementById("hobbyChart"), {
+        type: "bar",
+        data: {
+          labels: Object.keys(hobbyCats),
+          datasets: [{
+            label: "인원 수",
+            data: Object.values(hobbyCats),
+            backgroundColor: ["#ff6b9d", "#34d399", "#a78bfa", "#60a5fa", "#fbbf24", "#f472b6"],
+            borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+        }
+      }));
+
+      // 4. Treasure / Gender Chart
+      const treasureCats = {
+        "가족·엄마·동생 (8명)": 8,
+        "나 자신 (4명)": 4,
+        "친구·최애·반려 (김보라·이성열·망고 등)": 4,
+        "건강 (1명)": 1
+      };
+      chartInstances.push(new Chart(document.getElementById("treasureChart"), {
+        type: "polarArea",
+        data: {
+          labels: Object.keys(treasureCats),
+          datasets: [{
+            data: Object.values(treasureCats),
+            backgroundColor: [
+              "rgba(255, 107, 157, 0.75)",
+              "rgba(124, 140, 255, 0.75)",
+              "rgba(52, 211, 153, 0.75)",
+              "rgba(251, 191, 36, 0.75)"
+            ],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { position: "bottom", labels: { boxWidth: 12, font: { size: 11 } } } }
+        }
+      }));
+    }
+
+    renderCharts();
+
+    // Directory Rendering & Filtering
+    let currentFilter = "all";
+    let searchTerm = "";
+
+    function igToUrl(ig) {
+      const handle = ig.replace(/^@/, "").trim();
+      return `https://www.instagram.com/${encodeURIComponent(handle)}/`;
+    }
+
+    function renderCards() {
+      const grid = document.getElementById("cardsGrid");
+      grid.innerHTML = "";
+
+      const filtered = PEOPLE.filter(p => {
+        if (currentFilter === "match" && !p.isMatch && !p.isMe) return false;
+        if (["서울", "경기", "기타"].includes(currentFilter) && p.region !== currentFilter) return false;
+        if (searchTerm) {
+          const hay = `${p.name} ${p.address} ${p.hobby} ${p.treasure} ${p.ig}`.toLowerCase();
+          if (!hay.includes(searchTerm.toLowerCase())) return false;
+        }
+        return true;
+      });
+
+      filtered.forEach(p => {
+        const card = document.createElement("div");
+        card.className = `person-card${p.isMe ? " is-me" : ""}`;
+
+        const top = document.createElement("div");
+        top.className = "card-top";
+
+        const nameEl = document.createElement("div");
+        nameEl.className = "card-name";
+        nameEl.textContent = p.name;
+        if (p.isMe) {
+          const badge = document.createElement("span");
+          badge.className = "me-pill";
+          badge.textContent = "ME";
+          nameEl.appendChild(badge);
+        }
+
+        const distEl = document.createElement("span");
+        distEl.className = "dist-badge";
+        distEl.textContent = p.isMe ? "기준점 (0km)" : `${p.distKm.toFixed(1)} km`;
+
+        top.append(nameEl, distEl);
+
+        const meta = document.createElement("div");
+        meta.className = "card-meta";
+        meta.innerHTML = `
+          <div>📍 <strong>거주지:</strong> ${p.address}</div>
+          <div>🎯 <strong>취미:</strong> ${p.hobby}</div>
+          <div>💛 <strong>아끼는 것:</strong> ${p.treasure}</div>
+          <div>✨ <strong>성별/특징:</strong> ${p.gender} · <strong>IG:</strong> ${p.ig}</div>
+        `;
+
+        const links = document.createElement("div");
+        links.className = "card-links";
+
+        const mapBtn = document.createElement("button");
+        mapBtn.className = "mini-link";
+        mapBtn.textContent = "📍 지도 보기";
+        mapBtn.addEventListener("click", () => {
+          document.getElementById("map").scrollIntoView({ behavior: "smooth", block: "center" });
+          map.setView([p.lat, p.lng], 12);
+          markerRefs[p.name].openPopup();
+        });
+        links.appendChild(mapBtn);
+
+        const linkList = [
+          { label: "GitHub", url: p.github },
+          { label: "제출페이지", url: p.page },
+          { label: "인물지도", url: p.mapUrl },
+          { label: "AI스튜디오", url: p.aiUrl },
+          { label: "인스타", url: p.ig ? igToUrl(p.ig) : "" }
+        ];
+        linkList.forEach(item => {
+          if (!item.url) return;
+          const a = document.createElement("a");
+          a.className = "mini-link";
+          a.href = item.url;
+          a.target = "_blank";
+          a.rel = "noopener";
+          a.textContent = item.label;
+          links.appendChild(a);
+        });
+
+        card.append(top, meta, links);
+        grid.appendChild(card);
+      });
+    }
+
+    document.querySelectorAll("[data-filter]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("[data-filter]").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentFilter = btn.dataset.filter;
+        renderCards();
+      });
+    });
+
+    document.getElementById("searchInput").addEventListener("input", (e) => {
+      searchTerm = e.target.value.trim();
+      renderCards();
+    });
+
+    document.getElementById("themeToggle").addEventListener("click", (e) => {
+      document.body.classList.toggle("light");
+      e.target.textContent = document.body.classList.contains("light") ? "🌙 다크 모드" : "☀️ 라이트 모드";
+      renderCharts();
+    });
+
+    renderCards();
+  </script>
+</body>
+</html>

@@ -3,90 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f5f4ef">
-<title>우리 반 데이터 시각화</title>
+<title>우리 반 자기소개 데이터 아카이브</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap');
-:root{--bg:#f5f4ef;--paper:#fffefa;--ink:#202820;--muted:#778078;--line:#e5e6dc;--green:#527b65;--green2:#dce9dc;--orange:#df855c;--yellow:#e9c66e;--blue:#8da8bd;--shadow:0 12px 35px rgba(34,48,37,.06)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',sans-serif}
-.wrap{max-width:1120px;margin:auto;padding:48px 28px 64px}
-.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:54px}.eyebrow,.num,.tag{font-family:'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
-.eyebrow{font-size:11px;color:var(--green);font-weight:500}.tag{font-size:10px;color:var(--muted);border:1px solid var(--line);padding:8px 11px;border-radius:30px}
-h1{font-size:clamp(34px,6vw,62px);line-height:1.12;letter-spacing:-.065em;margin:14px 0 14px;font-weight:800}
-.intro{color:var(--muted);font-size:14px;line-height:1.8;margin:0;max-width:600px}
-.section-head{display:flex;justify-content:space-between;align-items:end;margin:46px 0 16px}.section-head h2{font-size:19px;letter-spacing:-.04em;margin:0}.section-head p{font-size:11px;color:var(--muted);margin:0}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.card{background:var(--paper);border:1px solid var(--line);border-radius:17px;padding:22px;box-shadow:var(--shadow)}
-.kpi-label{font-size:12px;color:var(--muted)}.kpi-value{font-size:36px;font-weight:800;letter-spacing:-.06em;margin:9px 0 2px}.kpi-note{font-size:11px;color:var(--muted)}
-.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}.chart-card{background:var(--paper);border:1px solid var(--line);border-radius:17px;padding:24px;box-shadow:var(--shadow);min-width:0}
-.chart-title{font-size:14px;font-weight:700;margin:0 0 5px}.chart-sub{font-size:11px;color:var(--muted);margin:0 0 22px}
-.bar-list{display:grid;gap:15px}.bar-row{display:grid;grid-template-columns:78px 1fr 25px;gap:10px;align-items:center;font-size:12px}.bar-track{height:9px;background:#eef0e9;border-radius:20px;overflow:hidden}.bar-fill{height:100%;border-radius:20px;background:var(--green)}.bar-count{text-align:right;font-family:'DM Mono';font-size:12px;color:var(--muted)}
-.distance{display:grid;gap:13px}.dist-row{display:grid;grid-template-columns:76px 1fr 28px;gap:10px;align-items:center;font-size:12px}.dist-row .bar-fill{background:var(--orange)}
-.big-stat{display:flex;gap:10px;align-items:baseline;margin:15px 0 20px}.big-stat strong{font-size:39px;letter-spacing:-.06em}.big-stat span{font-size:12px;color:var(--muted)}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:12px}.mini{background:#f5f6f0;border-radius:12px;padding:15px}.mini strong{display:block;font-size:23px;letter-spacing:-.04em}.mini span{font-size:11px;color:var(--muted)}
-.pill-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}.pill{background:var(--green2);color:#42664f;border-radius:30px;padding:7px 11px;font-size:11px}
-.note{margin-top:17px;padding:13px 15px;background:#f7f3e9;border-radius:11px;color:#756b55;font-size:11px;line-height:1.7}
-.footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:15px;color:var(--muted);font-size:10px}
-@media(max-width:760px){.wrap{padding:30px 17px 45px}.top{margin-bottom:38px}.kpis{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.section-head{margin-top:35px}.card{padding:17px}.kpi-value{font-size:31px}.footer{flex-direction:column}}
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Gowun+Batang:wght@400;700&family=Pretendard:wght@400;500;600;700;800&display=swap');
+:root{--bg:#edf1e9;--paper:#f8faf5;--ink:#1c2a25;--muted:#77847b;--line:#d5ded3;--green:#397568;--green2:#a9c8b7;--orange:#d46d4e;--yellow:#d6b66c;--shadow:0 12px 34px rgba(39,66,53,.07)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,"Apple SD Gothic Neo",sans-serif;line-height:1.55}
+.wrap{max-width:1200px;margin:auto;padding:32px 24px 64px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.eyebrow,.mono{font:500 11px 'DM Mono',monospace;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.eyebrow b{color:var(--green)}h1{font:700 clamp(32px,5vw,54px) 'Gowun Batang',serif;letter-spacing:-.04em;margin:18px 0 8px}
+.lead{color:#637169;max-width:700px;margin:0 0 26px;font-size:15px}
+.stamp{border:1px solid var(--line);padding:9px 12px;border-radius:3px;color:var(--green);font:500 10px 'DM Mono',monospace;white-space:nowrap}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:26px 0}
+.kpi,.panel{background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow)}
+.kpi{padding:18px 20px}.kpi .label{font:500 10px 'DM Mono',monospace;color:var(--muted);letter-spacing:.1em}
+.kpi strong{display:block;font:700 34px 'Gowun Batang',serif;margin-top:5px}.kpi small{font-size:12px;color:var(--muted);font-family:Pretendard}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}.panel{padding:20px 22px;min-width:0}
+.panel h2{font:700 21px 'Gowun Batang',serif;margin:0 0 4px}.sub{font-size:12px;color:var(--muted);margin-bottom:18px}
+.chart{width:100%;overflow:hidden}.barrow{display:grid;grid-template-columns:95px 1fr 34px;align-items:center;gap:10px;margin:12px 0;font-size:12px}
+.barlabel{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#526158}.track{height:10px;background:#e8eee6;border-radius:20px;overflow:hidden}.fill{height:100%;background:var(--green);border-radius:20px}.barvalue{text-align:right;font:500 11px 'DM Mono',monospace;color:var(--green)}
+.distance-list{display:flex;flex-direction:column;gap:10px}.distance-row{display:grid;grid-template-columns:64px 1fr 52px;gap:9px;align-items:center;font-size:12px}.distance-row .name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#526158}.distance-row .track{height:8px}.distance-row .fill{background:var(--orange)}.distance-row .km{text-align:right;font:500 11px 'DM Mono',monospace}
+.tags{display:flex;flex-wrap:wrap;gap:8px}.tag{padding:7px 10px;border:1px solid var(--line);background:#f1f5ee;border-radius:30px;font-size:12px;color:#53645a}.tag b{color:var(--green);margin-left:5px;font:500 11px 'DM Mono',monospace}
+.full{margin-top:14px}.treasures{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.treasure{padding:12px;border-left:2px solid var(--yellow);background:#f2f5ee;font-size:12px}.treasure strong{display:block;font-size:11px;color:var(--green);margin-bottom:3px}
+.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:28px 0 12px;flex-wrap:wrap}.toolbar h2{font:700 24px 'Gowun Batang',serif;margin:0}
+input{border:1px solid var(--line);background:var(--paper);padding:10px 13px;font:inherit;font-size:13px;min-width:220px;outline:none}input:focus{border-color:var(--green)}
+.tablewrap{overflow:auto;background:var(--paper);border:1px solid var(--line)}table{width:100%;border-collapse:collapse;min-width:760px;font-size:12px}th,td{text-align:left;padding:12px 14px;border-bottom:1px solid #e5ebe2;vertical-align:top}th{font:500 10px 'DM Mono',monospace;color:var(--muted);letter-spacing:.08em;background:#f1f5ee}tbody tr:hover{background:#f1f6ef}td:first-child{font:500 11px 'DM Mono',monospace;color:var(--muted)}.person{font-weight:700}.profile{margin-top:14px;display:none;padding:20px;background:#e2ebe1;border:1px solid #cbd9ca}.profile.show{display:block}.profile h3{font:700 24px 'Gowun Batang',serif;margin:0 0 12px}.profile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.profile-item{background:rgba(255,255,255,.55);padding:10px 12px;font-size:12px}.profile-item span{display:block;font:500 9px 'DM Mono',monospace;color:var(--muted);margin-bottom:4px}
+.note{margin-top:20px;color:var(--muted);font-size:11px}.footer{margin-top:34px;border-top:1px solid var(--line);padding-top:14px;display:flex;justify-content:space-between;gap:12px;color:var(--muted);font:10px 'DM Mono',monospace}
+@media(max-width:800px){.grid{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.treasures{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.wrap{padding:22px 14px 44px}.stamp{display:none}.panel{padding:17px}.profile-grid{grid-template-columns:1fr 1fr}.treasures{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<main class="wrap">
-  <header class="top"><div class="eyebrow">CLASS DATA / 2026—02</div><div class="tag">KDU · METROPOL CAMPUS</div></header>
-  <section>
-    <div class="eyebrow">OUR CLASS, IN NUMBERS</div>
-    <h1>우리 반을<br>숫자로 살펴보다.</h1>
-    <p class="intro">우리 반 인물지도에 담긴 정보를 바탕으로 학생들의 거주 거리, 지역 분포, 관심사를 한눈에 볼 수 있도록 정리했습니다.</p>
-  </section>
-
-  <div class="section-head"><h2>한눈에 보는 우리 반</h2><p>OVERVIEW</p></div>
-  <section class="kpis">
-    <article class="card"><div class="kpi-label">전체 학생</div><div class="kpi-value">15명</div><div class="kpi-note">인물지도 등록 기준</div></article>
-    <article class="card"><div class="kpi-label">지역 정보 입력</div><div class="kpi-value">14명</div><div class="kpi-note">전체의 93.3%</div></article>
-    <article class="card"><div class="kpi-label">GitHub 등록</div><div class="kpi-value">15명</div><div class="kpi-note">계정 등록 완료</div></article>
-    <article class="card"><div class="kpi-label">개인 페이지</div><div class="kpi-value">14개</div><div class="kpi-note">전체의 93.3%</div></article>
-  </section>
-
-  <div class="section-head"><h2>어디에서 통학할까요?</h2><p>LOCATION</p></div>
-  <section class="grid">
-    <article class="chart-card">
-      <h3 class="chart-title">거주 지역 분포</h3><p class="chart-sub">지역 정보가 입력된 14명 기준 · 시/구 단위</p>
-      <div class="bar-list" id="cityBars"></div>
-    </article>
-    <article class="chart-card">
-      <h3 class="chart-title">학교까지의 거리</h3><p class="chart-sub">입력된 거리 14건 기준</p>
-      <div class="big-stat"><strong>21.5km</strong><span>중앙값</span></div>
-      <div class="distance" id="distanceBars"></div>
-      <div class="note">거제시 거주 학생 1명(353km)을 포함한 평균은 약 44.9km입니다. 원거리 통학 사례의 영향으로 평균보다 중앙값이 일반적인 통학 거리를 더 잘 보여줍니다.</div>
-    </article>
-  </section>
-
-  <div class="section-head"><h2>우리 반의 관심사</h2><p>INTERESTS</p></div>
-  <section class="grid">
-    <article class="chart-card">
-      <h3 class="chart-title">취미 키워드</h3><p class="chart-sub">취미 문구에서 직접 확인한 키워드 기준</p>
-      <div class="bar-list">
-        <div class="bar-row"><span>음악·악기</span><div class="bar-track"><div class="bar-fill" style="width:46.7%"></div></div><span class="bar-count">7</span></div>
-        <div class="bar-row"><span>게임</span><div class="bar-track"><div class="bar-fill" style="width:13.3%;background:var(--blue)"></div></div><span class="bar-count">2</span></div>
-      </div>
-      <div class="note">음악·악기에는 기타 연주, 노래 듣기, 콘서트 관람 등 관련 표현을 포함했습니다. 한 사람이 여러 취미를 가질 수 있어 항목은 중복될 수 있으며, 위 두 키워드 외 취미는 개별적으로 다양하게 나타났습니다.</div>
-    </article>
-    <article class="chart-card">
-      <h3 class="chart-title">통학 거리 구간</h3><p class="chart-sub">지역 정보가 입력된 14명 기준</p>
-      <div class="distance">
-        <div class="dist-row"><span>15km 이하</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-count">6</span></div>
-        <div class="dist-row"><span>16–30km</span><div class="bar-track"><div class="bar-fill" style="width:83.3%"></div></div><span class="bar-count">5</span></div>
-        <div class="dist-row"><span>31–60km</span><div class="bar-track"><div class="bar-fill" style="width:33.3%"></div></div><span class="bar-count">2</span></div>
-        <div class="dist-row"><span>60km 초과</span><div class="bar-track"><div class="bar-fill" style="width:16.7%"></div></div><span class="bar-count">1</span></div>
-      </div>
-      <div class="pill-row"><span class="pill">15km 이하 6명</span><span class="pill">30km 이하 11명</span></div>
-    </article>
-  </section>
-  <footer class="footer"><span>DATA SOURCE · 우리 반 인물지도 (제공된 HTML)</span><span>개인 식별 정보 및 상세 주소를 제외한 공개용 요약 데이터</span></footer>
-</main>
+<div class="wrap">
+  <div class="top"><div class="eyebrow">CLASS DATA ARCHIVE <b>· 2026</b></div><div class="stamp">SELF INTRODUCTION / DATA VISUALIZATION</div></div>
+  <h1>우리 반, 조금 더 가까이</h1>
+  <p class="lead">15명의 자기소개를 데이터로 살펴봅니다. 각자의 취미와 사는 곳, 통학 거리, 소중하게 생각하는 것들을 한눈에 확인해 보세요.</p>
+  <div class="kpis" id="kpis"></div>
+  <div class="grid">
+    <section class="panel"><h2>어디에 살고 있을까요?</h2><div class="sub">거주 지역별 인원 · 위치를 입력한 학생 기준</div><div id="cities" class="chart"></div></section>
+    <section class="panel"><h2>학교까지 얼마나 멀까요?</h2><div class="sub">학생별 학교까지의 직선거리 · 제공된 거리 기준</div><div id="distances" class="distance-list"></div></section>
+    <section class="panel"><h2>우리 반의 취미</h2><div class="sub">자기소개에 적힌 취미 키워드 · 중복 집계 가능</div><div id="hobbies" class="tags"></div></section>
+    <section class="panel"><h2>가장 아끼는 것</h2><div class="sub">각자 소중하게 생각하는 대상을 그대로 모았습니다.</div><div id="treasures" class="treasures"></div></section>
+  </div>
+  <div class="toolbar"><h2>한 사람씩 만나보기</h2><input id="search" placeholder="이름, 지역, 취미 검색하기"></div>
+  <div class="tablewrap"><table><thead><tr><th>NO.</th><th>이름</th><th>사는 곳</th><th>학교까지</th><th>취미</th><th>가장 아끼는 것</th></tr></thead><tbody id="rows"></tbody></table></div>
+  <div class="profile" id="profile"></div>
+  <p class="note">※ 통학 거리는 원본 자기소개 데이터에 기재된 학교까지의 직선거리입니다. 위치 또는 항목을 입력하지 않은 경우 통계에서 제외했습니다. 공개 게시 전에는 학급 구성원의 동의를 확인해 주세요.</p>
+  <div class="footer"><span>CLASS / INTRODUCTION DATA</span><span>MADE WITH CARE · 2026</span></div>
+</div>
 <script>
-const cities=[['의정부시',4],['동두천시',1],['구리시',1],['남양주시',1],['춘천시',1],['송파구',1],['하남시',1],['동대문구',1],['도봉구',1],['포천시',1],['거제시',1]];
-document.getElementById('cityBars').innerHTML=cities.map(([name,n])=>`<div class="bar-row"><span>${name}</span><div class="bar-track"><div class="bar-fill" style="width:${n/4*100}%"></div></div><span class="bar-count">${n}</span></div>`).join('');
-const distances=[['15km 이하',6],['16–30km',5],['31–60km',2],['60km 초과',1]];
-document.getElementById('distanceBars').innerHTML=distances.map(([name,n])=>`<div class="dist-row"><span>${name}</span><div class="bar-track"><div class="bar-fill" style="width:${n/6*100}%"></div></div><span class="bar-count">${n}</span></div>`).join('');
+const people = [
+{name:"박종석",city:"의정부시",km:8,hobby:"일렉기타, 영화감상",treasure:"나"},
+{name:"박준영",city:"의정부시",km:9,hobby:"피파",treasure:"김보라"},
+{name:"강민서",city:"미입력",km:null,hobby:"쿠리만쥬 인형 구매",treasure:"미입력"},
+{name:"박정빈",city:"거제시",km:353,hobby:"노래듣기",treasure:"나 ^.....^"},
+{name:"김나림",city:"동두천시",km:10,hobby:"그림, 음악, 운동, 애니",treasure:"나라고 나"},
+{name:"김보라",city:"의정부시",km:7,hobby:"공포 보기",treasure:"김복돌"},
+{name:"김승기",city:"구리시",km:24,hobby:"네줄기타",treasure:"바로바로 나!"},
+{name:"문민희",city:"남양주시",km:24,hobby:"게임",treasure:"가족, 망고, 여름"},
+{name:"민제희",city:"춘천시",km:58,hobby:"게임, 운동, 기깔나게 자기",treasure:"가족들, 이연우"},
+{name:"윤수아",city:"송파구",km:36,hobby:"기타, 애니, 음악듣기",treasure:"동생"},
+{name:"이지민",city:"하남시",km:30,hobby:"독서",treasure:"가족"},
+{name:"정유림",city:"동대문구",km:28,hobby:"콘서트 관람",treasure:"우리 엄마, 이성열 미모"},
+{name:"최윤영",city:"도봉구",km:19,hobby:"음악 감상 및 연주(통기타&일렉)",treasure:"엄마"},
+{name:"최윤지",city:"포천시",km:14,hobby:"우쿨렐레, 뜨개질",treasure:"건강"},
+{name:"신단하",city:"의정부시",km:9,hobby:"위시 사랑하기",treasure:"동생"}
+];
+const placed=people.filter(p=>p.km!==null), avg=Math.round(placed.filter(p=>p.city!=="거제시").reduce((s,p)=>s+p.km,0)/placed.filter(p=>p.city!=="거제시").length);
+const near=placed.filter(p=>p.km<=15).length;
+const cityCounts={};placed.forEach(p=>{cityCounts[p.city]=(cityCounts[p.city]||0)+1});
+const cities=Object.entries(cityCounts).sort((a,b)=>b[1]-a[1]);
+document.getElementById('kpis').innerHTML=[
+["전체 인원",people.length,"명"],["지역 입력",placed.length,"명"],["15km 이내",near,"명"],["수도권 평균 거리",avg,"km*"]
+].map(([a,b,c])=>`<div class="kpi"><div class="label">${a}</div><strong>${b}<small>${c}</small></strong></div>`).join('');
+document.getElementById('cities').innerHTML=cities.map(([name,n])=>`<div class="barrow"><div class="barlabel">${name}</div><div class="track"><div class="fill" style="width:${n/Math.max(...cities.map(x=>x[1]))*100}%"></div></div><div class="barvalue">${n}명</div></div>`).join('');
+const dist=[...placed].sort((a,b)=>a.km-b.km);
+document.getElementById('distances').innerHTML=dist.map(p=>`<div class="distance-row"><div class="name">${p.name}</div><div class="track"><div class="fill" style="width:${p.km/353*100}%"></div></div><div class="km">${p.km}km</div></div>`).join('');
+const categories={"음악":["기타","음악","노래","콘서트","우쿨렐레"],"게임·애니":["게임","피파","애니","쿠리만쥬"],"운동·휴식":["운동","자기"],"예술·취미":["그림","뜨개질","독서","위시","공포","영화"]};
+const hobbyCounts={};Object.entries(categories).forEach(([cat,keys])=>{hobbyCounts[cat]=people.filter(p=>keys.some(k=>p.hobby.includes(k))).length});
+document.getElementById('hobbies').innerHTML=Object.entries(hobbyCounts).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span class="tag">${k}<b>${v}명</b></span>`).join('')+`<span class="tag">기타 취미<b>개별 소개 참고</b></span>`;
+document.getElementById('treasures').innerHTML=people.filter(p=>p.treasure!=="미입력").map(p=>`<div class="treasure"><strong>${p.name}</strong>${p.treasure}</div>`).join('');
+function renderRows(q=""){const filtered=people.filter(p=>(p.name+p.city+p.hobby+p.treasure).toLowerCase().includes(q.toLowerCase()));document.getElementById('rows').innerHTML=filtered.map(p=>`<tr data-name="${p.name}"><td>${String(people.indexOf(p)+1).padStart(2,'0')}</td><td class="person">${p.name}</td><td>${p.city}</td><td>${p.km===null?"미입력":p.km+"km"}</td><td>${p.hobby}</td><td>${p.treasure}</td></tr>`).join('');document.querySelectorAll('#rows tr').forEach(tr=>tr.onclick=()=>showProfile(people.find(p=>p.name===tr.dataset.name)));}
+function showProfile(p){const el=document.getElementById('profile');el.classList.add('show');el.innerHTML=`<h3>${p.name}</h3><div class="profile-grid"><div class="profile-item"><span>LOCATION</span>${p.city}</div><div class="profile-item"><span>DISTANCE</span>${p.km===null?"미입력":p.km+"km"}</div><div class="profile-item"><span>HOBBY</span>${p.hobby}</div><div class="profile-item"><span>TREASURE</span>${p.treasure}</div></div>`;el.scrollIntoView({behavior:'smooth',block:'nearest'});}
+document.getElementById('search').addEventListener('input',e=>renderRows(e.target.value));renderRows();
 </script>
 </body></html>
